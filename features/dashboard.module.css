@@ -1,0 +1,22 @@
+.dashboardWrapper {
+  display: grid;
+  grid-template-areas:
+    "sidebar header header"
+    "sidebar main main"
+    "sidebar main main";
+  grid-template-columns: 250px 1fr;
+  grid-template-rows: 50px 1fr;
+  height: 100%;
+  gap: 15px;
+  background-color: rgb(240, 250, 250);
+}
+.dashboardWrapper .pageContainer {
+  grid-area: main;
+  background-color: white;
+}
+.dashboardWrapper header {
+  grid-area: header;
+  font-size: 2rem;
+  padding: 10px 0;
+  background-color: white;
+}

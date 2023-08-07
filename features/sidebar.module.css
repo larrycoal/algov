@@ -1,0 +1,40 @@
+.sidebarWrapper {
+  grid-area: sidebar;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+.sidebarWrapper .mainlogo {
+  height: 150px;
+  padding: 1rem 0;
+  font-size: 2.5rem;
+  display: flex;
+  align-content: center;
+  align-items: flex-end;
+}
+.sidebarWrapper .mainlogo span:last-child {
+  font-weight: bolder;
+  font-size: 3rem;
+  margin: 0 2px;
+}
+.sidebarWrapper svg {
+  padding-bottom: 4px;
+}
+.sidebarWrapper .navigation {
+  list-style: none;
+  font-size: 1.5rem;
+  margin: 1.5rem 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  letter-spacing: 2px;
+}
+.sidebarWrapper .navigation a {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
