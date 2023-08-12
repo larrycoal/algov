@@ -1,7 +1,7 @@
 import DashboardLayout from '@/features/DashboardLayout';
 import React from 'react';
 
-const age = () => {
+const page = () => {
     return (
         <DashboardLayout>
             <h1>This Is Duobly linked list</h1>
@@ -9,4 +9,4 @@ const age = () => {
     );
 };
 
-export default age;
+export default page;

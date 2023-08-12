@@ -18,8 +18,11 @@
   font-size: 3rem;
   margin: 0 2px;
 }
-.sidebarWrapper svg {
+/* .sidebarWrapper svg {
   padding-bottom: 4px;
+} */
+.sidebarWrapper .mainlogo span{
+  line-height: 40px
 }
 .sidebarWrapper .navigation {
   list-style: none;
