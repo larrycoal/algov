@@ -19,17 +19,18 @@ const Sidebar = () => {
             </Link>
           </li>
           <li>
-            <Link href="/bst">
-              <TbBinaryTree2 />
-              <span>BST</span>
-            </Link>
-          </li>
-          <li>
             <Link href="/linkedlist">
               <SiInstructure />
               <span>Linked List</span>
             </Link>
           </li>
+          <li>
+            <Link href="/bst">
+              <TbBinaryTree2 />
+              <span>BST</span>
+            </Link>
+          </li>
+
           <li>
             <Link href="/dll">
               <SiInstructure />

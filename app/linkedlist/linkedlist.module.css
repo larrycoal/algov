@@ -1,0 +1,20 @@
+.emptyStateWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  min-height: 500px;
+}
+.emptyStateWrapper p{
+    font-size: 3rem;
+    font-weight: bold;
+    letter-spacing: .4px;
+}
+.emptyStateWrapper button{
+    border: 1px solid #0039CB;
+    padding: 10px 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
