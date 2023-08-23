@@ -1,7 +1,14 @@
 "use client";
 import DashboardLayout from "@/features/DashboardLayout";
-import React, { useState } from "react";
-import { Tabs, TabList, TabPanels, Tab, TabPanel, Button } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
+import {
+  Tabs,
+  TabList,
+  TabPanels,
+  Tab,
+  TabPanel,
+  Button,
+} from "@chakra-ui/react";
 import styles from "./linkedlist.module.css";
 import LinkedList from "../../features/algo/linkedlist";
 import dynamic from "next/dynamic";
@@ -13,12 +20,19 @@ const Box = dynamic(() => import("../../features/Box"), { ssr: false });
 
 const page = () => {
   const [list, setList] = useState(null);
-  const [openModal, setOpenModal] = useState(false);
 
+  const [openModal, setOpenModal] = useState(false);
+  let position = 10;
+  useEffect(() => {}, []);
   const handleCreateLinkedList = (val) => {
     setOpenModal(!openModal);
-    const newLinkedList = new LinkedList(val);
-    setList(newLinkedList);
+    if (!list) {
+      const newLinkedList = new LinkedList(val);
+      setList(newLinkedList);
+    } else {
+      const temp = list.push(val);
+      setList(temp);
+    }
   };
   const handleShowCanvas = () => {
     if (!list) {
@@ -26,16 +40,35 @@ const page = () => {
     }
     if (list && list.length === 1) {
       return (
-        <Canvas>
-          <Box
-            value={list.head.value}
-            positionX={10}
-            positionY={100}
-            head={true}
-            tail={true}
-          />
-        </Canvas>
+        <Box
+          value={list.head.value}
+          positionX={10}
+          positionY={100}
+          head={true}
+          tail={true}
+        />
       );
+    } else {
+      let tempLinkedList = [];
+      let temp = list.head;
+      while (temp) {
+        tempLinkedList.push(temp.value);
+        temp = temp.next;
+      }
+      return tempLinkedList.map((val, idx) => {
+        if (idx !== 0) {
+          position = position + 140;
+        }
+        return (
+          <Box
+            value={val}
+            positionX={position}
+            positionY={100}
+            head={idx === 0}
+            tail={idx === list.length - 1}
+          />
+        );
+      });
     }
   };
   return (
@@ -49,9 +82,15 @@ const page = () => {
         </div>
       ) : (
         <div className={styles.canvasWrapper}>
-          <div className={styles.left}>{handleShowCanvas()}</div>
+          <div className={styles.left}>
+            <Canvas>{handleShowCanvas()}</Canvas>
+          </div>
           <div className={styles.right}>
-            <Button colorScheme="teal" size="md" onClick={()=>setOpenModal(!openModal)}>
+            <Button
+              colorScheme="teal"
+              size="md"
+              onClick={() => setOpenModal(!openModal)}
+            >
               Push
             </Button>
           </div>
