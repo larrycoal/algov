@@ -1,7 +1,7 @@
 "use client";
 import DashboardLayout from "@/features/DashboardLayout";
 import React, { useState } from "react";
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
+import { Tabs, TabList, TabPanels, Tab, TabPanel, Button } from "@chakra-ui/react";
 import styles from "./linkedlist.module.css";
 import LinkedList from "../../features/algo/linkedlist";
 import dynamic from "next/dynamic";
@@ -18,7 +18,6 @@ const page = () => {
   const handleCreateLinkedList = (val) => {
     setOpenModal(!openModal);
     const newLinkedList = new LinkedList(val);
-    console.log(newLinkedList);
     setList(newLinkedList);
   };
   const handleShowCanvas = () => {
@@ -49,7 +48,14 @@ const page = () => {
           </button>
         </div>
       ) : (
-        handleShowCanvas()
+        <div className={styles.canvasWrapper}>
+          <div className={styles.left}>{handleShowCanvas()}</div>
+          <div className={styles.right}>
+            <Button colorScheme="teal" size="md" onClick={()=>setOpenModal(!openModal)}>
+              Push
+            </Button>
+          </div>
+        </div>
       )}
 
       <Tabs isFitted variant="enclosed">

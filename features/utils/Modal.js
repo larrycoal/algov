@@ -22,7 +22,7 @@ const Modal = ({ isOpen, onSubmit, onClose }) => {
       <ChakraModal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Value</ModalHeader>
+          <ModalHeader>Add New Node</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <NumberInput defaultValue={0} min={1} max={99}>
@@ -38,7 +38,7 @@ const Modal = ({ isOpen, onSubmit, onClose }) => {
             <Button colorScheme="blue" mr={3} onClick={onClose}>
               Close
             </Button>
-            <Button variant="ghost" onClick={()=>onSubmit(value)}>Secondary Action</Button>
+            <Button variant="ghost" onClick={()=>onSubmit(value)}>Add Node</Button>
           </ModalFooter>
         </ModalContent>
       </ChakraModal>

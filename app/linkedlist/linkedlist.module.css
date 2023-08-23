@@ -18,3 +18,10 @@
     border-radius: 5px;
     cursor: pointer;
 }
+.canvasWrapper{
+    display: flex;
+    padding: 2rem;
+}
+.canvasWrapper .left{
+    flex: 1;
+}
