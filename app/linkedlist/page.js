@@ -13,6 +13,10 @@ import styles from "./linkedlist.module.css";
 import LinkedList from "../../features/algo/linkedlist";
 import dynamic from "next/dynamic";
 import Modal from "@/features/utils/Modal";
+import Description from "./description";
+import Usecase from "./Usecase";
+import Codesnippet from "./Codesnippet";
+import Complexity from "./Complexity";
 const Canvas = dynamic(() => import("../../features/Canvas"), {
   ssr: false,
 });
@@ -97,25 +101,25 @@ const page = () => {
         </div>
       )}
 
-      <Tabs isFitted variant="enclosed">
+      <Tabs className={styles.tabWrapper} isFitted variant="enclosed">
         <TabList mb="1em">
           <Tab>Description</Tab>
-          <Tab>Use-Cases</Tab>
+          <Tab>Use-Case</Tab>
           <Tab>Code Snippet</Tab>
           <Tab>Complexity</Tab>
         </TabList>
         <TabPanels>
           <TabPanel>
-            <p>Description</p>
+            <Description/>
           </TabPanel>
           <TabPanel>
-            <p>Use cases</p>
+            <Usecase/>
           </TabPanel>
           <TabPanel>
-            <p>Code snippet</p>
+            <Codesnippet/>
           </TabPanel>
           <TabPanel>
-            <p>Complexity</p>
+            <Complexity/>
           </TabPanel>
         </TabPanels>
       </Tabs>
