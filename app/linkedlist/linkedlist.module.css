@@ -25,7 +25,11 @@
 .canvasWrapper .left {
   flex: 1;
 }
-
+.canvasWrapper .right{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
 .descriptionWrapper {
   overflow: scroll;
   max-height: 280px;

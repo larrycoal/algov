@@ -24,6 +24,18 @@ class LinkedList {
     this.length++;
     return this;
   }
+  unshift(val){
+    if(!this.head){
+        this.head = new Node(val);
+        this.tail = this.head;
+    }else{
+        let newNode = new Node(val)
+        newNode.next = this.head
+        this.head = newNode
+    }
+    this.length++;
+    return this
+  }
 }
 
 export default LinkedList;

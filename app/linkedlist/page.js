@@ -26,17 +26,39 @@ const page = () => {
   const [list, setList] = useState(null);
 
   const [openModal, setOpenModal] = useState(false);
+  const [action, setAction] = useState("");
   let position = 10;
-  useEffect(() => {}, []);
   const handleCreateLinkedList = (val) => {
     setOpenModal(!openModal);
-    if (!list) {
-      const newLinkedList = new LinkedList(val);
-      setList(newLinkedList);
-    } else {
-      const temp = list.push(val);
-      setList(temp);
+    switch (action) {
+      case "CREATE":
+        console.log(action);
+        const newLinkedList = new LinkedList(val);
+        setList(newLinkedList);
+        break;
+      case "PUSH":
+        let temp = list.push(val);
+        setList(temp);
+        break;
+      case "UNSHIFT":
+         temp = list.unshift(val);
+        setList(temp);
+        break;
+      default:
+        break;
     }
+    // if (!list) {
+    //   const newLinkedList = new LinkedList(val);
+    //   setList(newLinkedList);
+    // } else {
+    //   const temp = list.push(val);
+    //   setList(temp);
+    // }
+  };
+
+  const handleOpenModal = (actionType = "CREATE") => {
+    setAction(actionType);
+    setOpenModal(!openModal);
   };
   const handleShowCanvas = () => {
     if (!list) {
@@ -80,7 +102,7 @@ const page = () => {
       {!list ? (
         <div className={styles.emptyStateWrapper}>
           <p>Create a linkedlist</p>
-          <button onClick={() => setOpenModal(!openModal)}>
+          <button onClick={() => handleOpenModal("CREATE")}>
             Create New List
           </button>
         </div>
@@ -93,9 +115,16 @@ const page = () => {
             <Button
               colorScheme="teal"
               size="md"
-              onClick={() => setOpenModal(!openModal)}
+              onClick={() => handleOpenModal("PUSH")}
             >
               Push
+            </Button>
+            <Button
+              colorScheme="teal"
+              size="md"
+              onClick={() => handleOpenModal("UNSHIFT")}
+            >
+              Unshift
             </Button>
           </div>
         </div>
@@ -110,16 +139,16 @@ const page = () => {
         </TabList>
         <TabPanels>
           <TabPanel>
-            <Description/>
+            <Description />
           </TabPanel>
           <TabPanel>
-            <Usecase/>
+            <Usecase />
           </TabPanel>
           <TabPanel>
-            <Codesnippet/>
+            <Codesnippet />
           </TabPanel>
           <TabPanel>
-            <Complexity/>
+            <Complexity />
           </TabPanel>
         </TabPanels>
       </Tabs>
