@@ -28,6 +28,7 @@ const page = () => {
   const [openModal, setOpenModal] = useState(false);
   const [action, setAction] = useState("");
   let position = 10;
+
   const handleCreateLinkedList = (val) => {
     setOpenModal(false);
     let temp = null;
@@ -44,22 +45,21 @@ const page = () => {
         temp = list.unshift(val);
         setList(temp);
         break;
-      case "REVERSE":
-        temp = list.reverse();
-      // setList(temp)
       default:
         break;
     }
   };
-
-  const handleOpenModal = (actionType = "CREATE") => {
-    setAction(actionType);
-    if (actionType === "REVERSE") {
-      handleCreateLinkedList();
-      return;
-    } else {
-      setOpenModal(!openModal);
+  const handleReverseLinkedList = ()=>{
+    if(list){
+        let temp = list.reverse()
+         setList({...temp});
+        console.log(temp)
     }
+  }
+  const handleOpenModal = (actionType) => {
+    setAction(actionType);
+      setOpenModal(!openModal);
+    
   };
   const handleShowCanvas = () => {
     if (!list) {
@@ -130,7 +130,7 @@ const page = () => {
             <Button
               colorScheme="teal"
               size="md"
-              onClick={() => handleOpenModal("REVERSE")}
+              onClick={() => handleReverseLinkedList("REVERSE")}
             >
               Reverse
             </Button>

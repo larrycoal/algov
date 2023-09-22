@@ -40,17 +40,15 @@ class LinkedList {
     let temp = this.head;
     this.head = this.tail;
     this.tail = temp;
-    let curr = this.tail;
-    let prev = this.tail.next;
-    let next = prev.next;
-    while (next) {
-      prev.next = curr;
-      curr = prev;
-      prev = next;
-      next = next.next;
+    let next = temp.next;
+    let prev = null;
+    for (let i = 0; i < this.length; i++) {
+      next = temp.next;
+      temp.next = prev;
+      prev = temp;
+      temp = next;
     }
-    this.tail.next = null;
-    console.log(this);
+    return this
   }
 }
 
